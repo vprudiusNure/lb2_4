@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Lab 4 Socket.IO chat</title>
+	<style>
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		body { font: 16px Helvetica, Arial, sans-serif; }
+		form { background: #fff; padding: 10px; position: fixed; bottom: 0; width: 100%; display: grid; grid-template-columns: 9fr 1fr; gap: 10px; }
+		form input { border: none; outline: none; border-bottom: 3px solid rgb(130, 224, 255); padding: 10px; font-size: 16px; }
+		form button { background-color: rgb(130, 224, 255); border: none; outline: none; padding: 10px; font-size: 16px; }
+		#messages { list-style-type: none; }
+		#messages li { padding: 7px 10px; }
+		#messages li:nth-child(odd) { background: #eee; }
+		#messages { margin-bottom: 50px }
+	</style>
+</head>
+
+<body>
+	<ul id="messages"></ul>
+
+	<form action="">
+		<input id="m" autocomplete="off" autofocus placeholder="Type...">
+		<button>Send</button>
+	</form>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script>
+		$(function () {
+			var socket = io();
+
+			document.querySelector('form').addEventListener('submit',event => {
+				event.preventDefault();
+
+				let message = document.querySelector('#m');
+				socket.emit('send message', message.value);
+				message.value = "";
+				message.focus();
+				return false;
+			});
+
+			socket.on('receive message', function(msg) {
+				let newMsg = document.createElement('li');
+				newMsg.innerText = msg;
+				document.querySelector('#messages').append(newMsg);
+			});
+		});
+	</script>
+</body>
+</html>

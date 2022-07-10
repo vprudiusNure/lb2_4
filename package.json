@@ -1,0 +1,15 @@
+{
+  "name": "itech-prudya-socket-chat-example",
+  "version": "0.0.1",
+  "description": "itech chat app",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.4"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "main": "index.js",
+  "author": "Prudius",
+  "license": "ISC"
+}

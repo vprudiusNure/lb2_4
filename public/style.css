@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+}
+form {
+	background: #fff;
+	padding: 10px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 9fr 1fr;
+	gap: 10px;
+}
+form input {
+	border: none;
+	outline: none;
+	border-bottom: 3px solid rgb(130, 224, 255);
+	padding: 10px;
+	font-size: 16px;
+}
+form button {
+	background-color: rgb(130, 224, 255);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 16px;
+}
+#messages {
+	list-style-type: none;
+}
+#messages li {
+	padding: 7px 10px;
+}
+#messages li:nth-child(odd) {
+	background: #eee;
+}
+#messages {
+	margin-bottom: 50px
+}
